@@ -1,0 +1,50 @@
+type Query {
+    "Lista de los estudiantes"
+    estudiantes: [Estudiante!]!
+
+    "Retorna un estudiante, de acuerdo con un ID."
+    estudiante(id: ID!): Estudiante!
+
+    "Lista de cursos"
+    cursos: [Curso!]!
+
+    "Curso por id"
+    curso(id: ID!): Curso!
+}
+
+"Información de los estudiantes"
+type Estudiante {
+        id:  ID!
+        name: String!
+        email: String!
+        website: String,
+        courses: [Curso!]!
+}
+
+type Curso {
+    id: ID!
+    title: String!
+    description: String!
+    clases: Int!
+    time: Float!
+    logo: String!
+    level: Nivel!
+    path: String!
+    teacher: String!
+    students: [Estudiante]
+    reviews: [Review!]!
+}
+
+type Review {
+    id: ID!
+    name: String!
+    points: Float!
+    comment: String
+}
+
+enum Nivel {
+    TODOS
+    NOVATO
+    INTERMEDIO
+    EXPERTO
+}
