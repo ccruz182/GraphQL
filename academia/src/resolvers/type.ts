@@ -19,6 +19,9 @@ const type: IResolvers = {
       else if (parent.level === "MEDIUM") return "INTERMEDIO";
       else return "TODOS";
     },
+    students: parent => {        
+        return database.estudiantes.filter(estudiante => estudiante.courses.includes(parent.id))
+    }
   },
 };
 

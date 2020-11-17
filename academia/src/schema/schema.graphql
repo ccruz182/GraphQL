@@ -12,6 +12,12 @@ type Query {
     curso(id: ID!): Curso!
 }
 
+type Mutation {
+    agregarCurso(curso: CursoInput!): Curso!
+    modificarCurso(curso: CursoInput!): Curso!
+    eliminarCurso(id: ID!): Curso!
+}
+
 "Información de los estudiantes"
 type Estudiante {
         id:  ID!
@@ -21,6 +27,7 @@ type Estudiante {
         courses: [Curso!]!
 }
 
+"Información de los cursos"
 type Curso {
     id: ID!
     title: String!
@@ -35,6 +42,7 @@ type Curso {
     reviews: [Review!]!
 }
 
+"Información de las reseñas"
 type Review {
     id: ID!
     name: String!
@@ -42,6 +50,20 @@ type Review {
     comment: String
 }
 
+"Input de un curso"
+input CursoInput {
+    id: ID
+    title: String!
+    description: String!
+    clases: Int!
+    time: Float!
+    logo: String!
+    level: Nivel=TODOS
+    path: String!
+    teacher: String!
+}
+
+"Enumeración de los niveles"
 enum Nivel {
     TODOS
     NOVATO
